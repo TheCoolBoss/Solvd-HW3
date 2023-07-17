@@ -9,7 +9,7 @@
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>SolvdHW3</name>
-	<url>solvd.hw3</url>
+	<url>https://solvd.com</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

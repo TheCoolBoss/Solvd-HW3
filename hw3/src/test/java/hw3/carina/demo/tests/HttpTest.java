@@ -29,7 +29,6 @@ public class HttpTest implements IAbstractTest
     public void testPost()
     {
         PostUserMethod post = new PostUserMethod();
-        post.setProperties("api/users/user.properties");
         post.expectResponseStatus(HttpResponseStatusType.CREATED_201);
         post.callAPI();
         post.validateResponse();

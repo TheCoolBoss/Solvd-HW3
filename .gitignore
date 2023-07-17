@@ -26,6 +26,5 @@ hs_err_pid*
 .vscode
 reports
 hw3/.settings
-hw3/src/test
 target
 
