@@ -7,10 +7,12 @@ import org.testng.annotations.Test;
 import com.zebrunner.carina.api.apitools.validation.JsonCompareKeywords;
 import com.zebrunner.carina.api.http.HttpResponseStatusType;
 import com.zebrunner.carina.core.IAbstractTest;
-import hw3.carina.demo.api.PostUserMethod;
 import hw3.carina.demo.hw.PhotosGet;
 import hw3.carina.demo.hw.PhotosPatch;
 import hw3.carina.demo.hw.PhotosPost;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
 
 public class HttpTest implements IAbstractTest
 {
@@ -20,9 +22,10 @@ public class HttpTest implements IAbstractTest
     public void testGet()
     {
         PhotosGet get = new PhotosGet();
-        get.callAPIExpectSuccess();
+        Response r = get.callAPIExpectSuccess();
         get.validateResponse(JSONCompareMode.STRICT_ORDER, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
         get.validateResponseAgainstSchema("api/photos/_get/hw/photo.schema");
+        JsonPath path = r.getBody().jsonPath();
     }
 
     @Test()
@@ -30,8 +33,11 @@ public class HttpTest implements IAbstractTest
     {
         PhotosPost post = new PhotosPost();
         post.expectResponseStatus(HttpResponseStatusType.CREATED_201);
-        post.callAPI();
+        Response r = post.callAPI();
         post.validateResponse();
+        JsonPath path = r.getBody().jsonPath();
+        String title = path.getString("0.title");
+        LOGGER.info(title);
     }
 
     @Test()
