@@ -7,6 +7,9 @@ public class Main
     public static void main(String[] args)
     {
         HttpTest httpTests = new HttpTest();
-        httpTests.testPost();
+        //httpTests.testGet();
+        //httpTests.testPost();
+        //httpTests.testPostWithMissingField();
+        httpTests.testPatch();
     }
 }

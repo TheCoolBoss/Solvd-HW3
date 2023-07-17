@@ -7,10 +7,10 @@ import org.testng.annotations.Test;
 import com.zebrunner.carina.api.apitools.validation.JsonCompareKeywords;
 import com.zebrunner.carina.api.http.HttpResponseStatusType;
 import com.zebrunner.carina.core.IAbstractTest;
-import freemarker.template.Configuration;
-import freemarker.template.Version;
-import hw3.carina.demo.api.GetUserMethods;
 import hw3.carina.demo.api.PostUserMethod;
+import hw3.carina.demo.hw.PhotosGet;
+import hw3.carina.demo.hw.PhotosPatch;
+import hw3.carina.demo.hw.PhotosPost;
 
 public class HttpTest implements IAbstractTest
 {
@@ -19,24 +19,38 @@ public class HttpTest implements IAbstractTest
     @Test()
     public void testGet()
     {
-        GetUserMethods get = new GetUserMethods();
+        PhotosGet get = new PhotosGet();
         get.callAPIExpectSuccess();
-        //get.validateResponse(JSONCompareMode.STRICT_ORDER, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-        get.validateResponseAgainstSchema("api/users/_get/rs.schema");
+        get.validateResponse(JSONCompareMode.STRICT_ORDER, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+        get.validateResponseAgainstSchema("api/photos/_get/hw/photo.schema");
     }
 
     @Test()
     public void testPost()
     {
-        PostUserMethod post = new PostUserMethod();
+        PhotosPost post = new PhotosPost();
         post.expectResponseStatus(HttpResponseStatusType.CREATED_201);
         post.callAPI();
+        post.validateResponse();
+    }
+
+    @Test()
+    public void testPostWithMissingField()
+    {
+        PhotosPost post = new PhotosPost();
+        post.getProperties().remove("title");
+        post.callAPIExpectSuccess();
         post.validateResponse();
     }
 
     @Test
     public void testPatch()
     {
-        
+        //Create with post first
+        testPost();
+
+        PhotosPatch patch = new PhotosPatch();
+        patch.callAPI();
+        //patch.validateResponse();
     }
 }

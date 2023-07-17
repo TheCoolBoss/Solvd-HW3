@@ -1,0 +1,9 @@
+[
+  {
+    "albumId": 1,
+    "id": 1,
+    <#if title??>"title": "${title}",</#if>
+    "url": "doriyah.com",
+    "thumbnailUrl": "ganondorf.com"
+  }
+]
