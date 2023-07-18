@@ -1,9 +1,11 @@
 [
   {
-    "albumId": "generate_number(1)",
-    "id": "generate_number(1)",
-    <#if title??>"title": "${title}",</#if>
-    "url": "doriyah.com",
-    "thumbnailUrl": "ganondorf.com"
+
+    <#if albumId??>"albumId": "${albumId}"</#if>
+    <#if id??>,"id": "${id}"</#if>
+    <#if title??>,"title": "${title}"</#if>
+    <#if url??>,"url": "${url}"</#if>
+    <#if thumbnailUrl??>,"thumbnailUrl": "${thumbnailUrl}"</#if>
+
   }
 ]

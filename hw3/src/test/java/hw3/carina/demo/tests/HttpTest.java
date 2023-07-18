@@ -47,7 +47,9 @@ public class HttpTest implements IAbstractTest
     {
         PhotosPostMethod post = new PhotosPostMethod();
         post.setProperties("api/photos/photo.properties");
+        post.getProperties().remove("id");
         post.getProperties().remove("title");
+        post.getProperties().remove("thumbnailUrl");
         post.callAPIExpectSuccess();
         post.validateResponse();
     }
