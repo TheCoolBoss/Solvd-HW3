@@ -39,10 +39,7 @@ public class HttpTest implements IAbstractTest
     @Test()
     public void testPost()
     {
-        Response response = postLogic();
-        JsonPath path = response.getBody().jsonPath();
-        String title = path.getString("0.title");
-        LOGGER.info(title);
+        postLogic();
     }
 
     @Test()
