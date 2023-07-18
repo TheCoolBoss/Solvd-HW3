@@ -14,7 +14,7 @@ public class PhotosPatch extends AbstractApiMethodV2
 {
     public PhotosPatch()
     {
-        super("api/photos/_patch/patchRq.json", "api/photos/_patch/patchRs.json", "api/photos/_patch/patch.properties");
+        //super("api/photos/_patch/patchRq.json", "api/photos/_patch/patchRs.json", "api/photos/_patch/patch.properties");
         replaceUrlPlaceholder("base_url", Configuration.getRequired("api_url"));  
     }
  

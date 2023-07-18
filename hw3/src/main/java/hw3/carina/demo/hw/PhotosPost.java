@@ -17,7 +17,7 @@ public class PhotosPost extends AbstractApiMethodV2
 {
     public PhotosPost()
     {
-        super("api/photos/_post/rq.json", "api/photos/_post/rs.json", "api/photos/photo.properties");
+        //super("api/photos/_post/rq.json", "api/photos/_post/rs.json", "api/photos/photo.properties");
         replaceUrlPlaceholder("base_url", Configuration.getRequired("api_url"));
     }
 }

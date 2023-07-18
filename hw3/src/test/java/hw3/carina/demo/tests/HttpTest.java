@@ -32,6 +32,7 @@ public class HttpTest implements IAbstractTest
     public void testPost()
     {
         PhotosPost post = new PhotosPost();
+        post.setProperties("api/photos/photo.properties");
         post.expectResponseStatus(HttpResponseStatusType.CREATED_201);
         Response r = post.callAPI();
         post.validateResponse();
@@ -44,18 +45,20 @@ public class HttpTest implements IAbstractTest
     public void testPostWithMissingField()
     {
         PhotosPost post = new PhotosPost();
+        post.setProperties("api/photos/photo.properties");
         post.getProperties().remove("title");
         post.callAPIExpectSuccess();
         post.validateResponse();
     }
 
-    @Test
+    @Test()
     public void testPatch()
     {
         //Create with post first
         testPost();
 
         PhotosPatch patch = new PhotosPatch();
+        patch.setProperties("api/photos/_patch/patch.properties");
         patch.callAPI();
         //patch.validateResponse();
     }
