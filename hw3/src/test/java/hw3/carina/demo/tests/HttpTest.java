@@ -64,6 +64,6 @@ public class HttpTest implements IAbstractTest
         patch.replaceUrlPlaceholder("base_url", Configuration.getRequired("endpoint_url") + "/" + id);
         patch.setProperties("api/photos/_patch/patch.properties");
         patch.callAPI();
-        //patch.validateResponse();
+        patch.validateResponse();
     }
 }
