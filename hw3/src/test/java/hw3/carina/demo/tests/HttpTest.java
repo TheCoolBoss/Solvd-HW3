@@ -7,9 +7,10 @@ import org.testng.annotations.Test;
 import com.zebrunner.carina.api.apitools.validation.JsonCompareKeywords;
 import com.zebrunner.carina.api.http.HttpResponseStatusType;
 import com.zebrunner.carina.core.IAbstractTest;
-import hw3.carina.demo.hw.PhotosGet;
-import hw3.carina.demo.hw.PhotosPatch;
-import hw3.carina.demo.hw.PhotosPost;
+
+import hw3.carina.demo.api.hw.PhotosGetMethod;
+import hw3.carina.demo.api.hw.PhotosPatchMethod;
+import hw3.carina.demo.api.hw.PhotosPostMethod;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
@@ -21,7 +22,7 @@ public class HttpTest implements IAbstractTest
     @Test()
     public void testGet()
     {
-        PhotosGet get = new PhotosGet();
+        PhotosGetMethod get = new PhotosGetMethod();
         Response r = get.callAPIExpectSuccess();
         get.validateResponse(JSONCompareMode.STRICT_ORDER, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
         get.validateResponseAgainstSchema("api/photos/_get/hw/photo.schema");
@@ -31,7 +32,7 @@ public class HttpTest implements IAbstractTest
     @Test()
     public void testPost()
     {
-        PhotosPost post = new PhotosPost();
+        PhotosPostMethod post = new PhotosPostMethod();
         post.setProperties("api/photos/photo.properties");
         post.expectResponseStatus(HttpResponseStatusType.CREATED_201);
         Response r = post.callAPI();
@@ -44,7 +45,7 @@ public class HttpTest implements IAbstractTest
     @Test()
     public void testPostWithMissingField()
     {
-        PhotosPost post = new PhotosPost();
+        PhotosPostMethod post = new PhotosPostMethod();
         post.setProperties("api/photos/photo.properties");
         post.getProperties().remove("title");
         post.callAPIExpectSuccess();
@@ -57,7 +58,7 @@ public class HttpTest implements IAbstractTest
         //Create with post first
         testPost();
 
-        PhotosPatch patch = new PhotosPatch();
+        PhotosPatchMethod patch = new PhotosPatchMethod();
         patch.setProperties("api/photos/_patch/patch.properties");
         patch.callAPI();
         //patch.validateResponse();

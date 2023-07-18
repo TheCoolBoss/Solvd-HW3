@@ -1,4 +1,4 @@
-package hw3.carina.demo.hw;
+package hw3.carina.demo.api.hw;
 
 import com.zebrunner.carina.api.AbstractApiMethodV2;
 import com.zebrunner.carina.api.annotation.Endpoint;
@@ -13,9 +13,9 @@ import com.zebrunner.carina.utils.config.Configuration;
 @RequestTemplatePath(path = "api/photos/_post/rq.json")
 @ResponseTemplatePath(path = "api/photos/_post/rs.json")
 @SuccessfulHttpStatus(status = HttpResponseStatusType.CREATED_201)
-public class PhotosPost extends AbstractApiMethodV2
+public class PhotosPostMethod extends AbstractApiMethodV2
 {
-    public PhotosPost()
+    public PhotosPostMethod()
     {
         //super("api/photos/_post/rq.json", "api/photos/_post/rs.json", "api/photos/photo.properties");
         replaceUrlPlaceholder("base_url", Configuration.getRequired("api_url"));

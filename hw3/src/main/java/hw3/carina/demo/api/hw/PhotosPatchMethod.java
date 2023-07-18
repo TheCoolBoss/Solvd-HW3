@@ -1,4 +1,4 @@
-package hw3.carina.demo.hw;
+package hw3.carina.demo.api.hw;
 
 import com.zebrunner.carina.api.AbstractApiMethodV2;
 import com.zebrunner.carina.api.annotation.Endpoint;
@@ -10,9 +10,9 @@ import com.zebrunner.carina.utils.config.Configuration;
 @Endpoint(url = "${base_url}/photos/5001", methodType = HttpMethodType.PATCH)
 @RequestTemplatePath(path = "api/photos/_patch/patchRq.json")
 @ResponseTemplatePath(path = "api/photos/_patch/patchRs.json")
-public class PhotosPatch extends AbstractApiMethodV2
+public class PhotosPatchMethod extends AbstractApiMethodV2
 {
-    public PhotosPatch()
+    public PhotosPatchMethod()
     {
         //super("api/photos/_patch/patchRq.json", "api/photos/_patch/patchRs.json", "api/photos/_patch/patch.properties");
         replaceUrlPlaceholder("base_url", Configuration.getRequired("api_url"));  
