@@ -33,7 +33,7 @@ public class HttpTest implements IAbstractTest
         PhotosGetMethod get = new PhotosGetMethod();
         get.callAPIExpectSuccess();
         get.validateResponse(JSONCompareMode.STRICT_ORDER, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-        get.validateResponseAgainstSchema("api/photos/_get/hw/photo.schema");
+        get.validateResponseAgainstSchema("api/photos/_get/photo.schema");
     }
 
     @Test()
