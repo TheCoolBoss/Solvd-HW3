@@ -8,8 +8,8 @@ public class Main
     {
         HttpTest httpTests = new HttpTest();
         //httpTests.testGet();
-        //httpTests.testPost();
+        httpTests.testPost();
         //httpTests.testPostWithMissingField();
-        httpTests.testPatch();
+        //httpTests.testPatch();
     }
 }
