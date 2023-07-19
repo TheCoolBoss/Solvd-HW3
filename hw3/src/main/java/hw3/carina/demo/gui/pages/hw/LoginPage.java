@@ -5,8 +5,6 @@ import org.openqa.selenium.support.FindBy;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 
-import hw3.carina.demo.gui.pages.hw.common.LoginPageBase;
-
 public class LoginPage extends AbstractPage
 {
     @FindBy(id = "user-name")

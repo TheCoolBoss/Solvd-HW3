@@ -6,9 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.testng.annotations.Test;
 import com.zebrunner.carina.core.IAbstractTest;
-
 import hw3.carina.demo.gui.pages.hw.LoginPage;
-import hw3.carina.demo.gui.pages.hw.common.LoginPageBase;
+
 
 public class WebTest implements IAbstractTest
 {
