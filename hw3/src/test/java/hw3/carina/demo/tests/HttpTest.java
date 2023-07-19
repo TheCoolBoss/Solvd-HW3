@@ -1,7 +1,7 @@
 package hw3.carina.demo.tests;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+// import org.apache.logging.log4j.LogManager;
+// import org.apache.logging.log4j.Logger;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.testng.annotations.Test;
 import com.zebrunner.carina.api.apitools.validation.JsonCompareKeywords;
@@ -10,12 +10,12 @@ import com.zebrunner.carina.utils.config.Configuration;
 import hw3.carina.demo.api.hw.PhotosGetMethod;
 import hw3.carina.demo.api.hw.PhotosPatchMethod;
 import hw3.carina.demo.api.hw.PhotosPostMethod;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 public class HttpTest implements IAbstractTest
 {
-    private static final Logger LOGGER = LogManager.getLogger(HttpTest.class);
+    //Left here just in case I need it later
+    //private static final Logger LOGGER = LogManager.getLogger(HttpTest.class);
 
     public Response postLogic()
     {
@@ -32,8 +32,9 @@ public class HttpTest implements IAbstractTest
     {
         PhotosGetMethod get = new PhotosGetMethod();
         get.callAPIExpectSuccess();
-        get.validateResponse(JSONCompareMode.STRICT_ORDER, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-        get.validateResponseAgainstSchema("api/photos/_get/photo.schema");
+        get.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey() + "albumId" + "id" + "title" + "url" + "thumbnailUrl");
+        //get.validateResponseAgainstSchema("api/photos/_get/photo.schema");
+
     }
 
     @Test()

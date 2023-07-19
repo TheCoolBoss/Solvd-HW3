@@ -9,7 +9,7 @@ public class Main
         HttpTest httpTests = new HttpTest();
         //httpTests.testGet();
         //httpTests.testPost();
-        httpTests.testPostWithMissingField();
+        //httpTests.testPostWithMissingField();
         //httpTests.testPatch();
     }
 }

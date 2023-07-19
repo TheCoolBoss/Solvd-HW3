@@ -1,6 +1,6 @@
 [
-    {
-      <#if title??>"title": "${title}",</#if>
-      "url": "wizkick.com"
-    }
-  ]
+  {
+    <#if title??>"title": "${title}",</#if>
+    "url": "wizkick.com"
+  }
+]
