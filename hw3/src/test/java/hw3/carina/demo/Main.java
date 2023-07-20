@@ -1,7 +1,7 @@
 package hw3.carina.demo;
 
 import hw3.carina.demo.hw.HttpTest;
-import hw3.carina.demo.hw.WebTest;
+import hw3.carina.demo.hw.LoginTest;
 
 public class Main 
 {

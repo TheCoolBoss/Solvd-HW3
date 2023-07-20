@@ -29,17 +29,20 @@ public class LoginPage extends AbstractPage
         super.open();
     }
     
-    public ExtendedWebElement getUsernameInput() {
+    public ExtendedWebElement getUsernameInput() 
+    {
         return usernameInput;
     }
 
 
-    public ExtendedWebElement getPassInput() {
+    public ExtendedWebElement getPassInput() 
+    {
         return passInput;
     }
 
 
-    public ExtendedWebElement getConfirmButton() {
+    public ExtendedWebElement getConfirmButton() 
+    {
         return confirmButton;
     }
 }
