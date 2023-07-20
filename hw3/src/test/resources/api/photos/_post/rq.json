@@ -1,11 +1,13 @@
 [
   {
-
-    <#if albumId??>"albumId": "${albumId}"</#if>
-    <#if id??>,"id": "${id}"</#if>
-    <#if title??>,"title": "${title}"</#if>
-    <#if url??>,"url": "${url}"</#if>
-    <#if thumbnailUrl??>,"thumbnailUrl": "${thumbnailUrl}"</#if>
-
+      <#if albumId??>"albumId": "${albumId}"</#if>
+      <#if albumId?? && (id?? || title?? || url?? || thumbnailUrl??)>, </#if>
+      <#if id??>"id": "${id}"</#if>
+      <#if id?? && (title?? || url?? || thumbnailUrl??)>, </#if>
+      <#if title??>"title": "${title}"</#if>
+      <#if title?? && (url?? || thumbnailUrl??)>, </#if>
+      <#if url??>"url": "${url}"</#if>
+      <#if url?? && (thumbnailUrl??)>, </#if>
+      <#if thumbnailUrl??>"thumbnailUrl": "${thumbnailUrl}"</#if>
   }
 ]

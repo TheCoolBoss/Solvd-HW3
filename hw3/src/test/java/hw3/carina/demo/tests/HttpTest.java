@@ -33,8 +33,7 @@ public class HttpTest implements IAbstractTest
         PhotosGetMethod get = new PhotosGetMethod();
         get.callAPIExpectSuccess();
         get.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey() + "albumId" + "id" + "title" + "url" + "thumbnailUrl");
-        //get.validateResponseAgainstSchema("api/photos/_get/photo.schema");
-
+        get.validateResponseAgainstSchema("api/photos/_get/photo.schema");
     }
 
     @Test()
@@ -48,7 +47,6 @@ public class HttpTest implements IAbstractTest
     {
         PhotosPostMethod post = new PhotosPostMethod();
         post.setProperties("api/photos/photo.properties");
-        post.getProperties().remove("id");
         post.getProperties().remove("title");
         post.getProperties().remove("thumbnailUrl");
         post.callAPIExpectSuccess();
@@ -66,7 +64,7 @@ public class HttpTest implements IAbstractTest
 
         patch.replaceUrlPlaceholder("base_url", Configuration.getRequired("endpoint_url") + "/" + id);
         patch.setProperties("api/photos/_patch/patch.properties");
-        patch.callAPI();
+        patch.callAPIExpectSuccess();
         patch.validateResponse();
     }
 }
