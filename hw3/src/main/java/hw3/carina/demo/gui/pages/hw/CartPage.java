@@ -4,6 +4,7 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class CartPage extends AbstractPage
 {
@@ -16,9 +17,9 @@ public class CartPage extends AbstractPage
         setPageURL("cart.html");
     }
 
-    public CheckoutInfoPage openCheckoutInfoPage(WebDriver wd)
+    public CheckoutInfoPage openCheckoutInfoPage()
     {
         checkoutButton.click();
-        return new CheckoutInfoPage(wd);
+        return new CheckoutInfoPage(getDriver());
     }
 }

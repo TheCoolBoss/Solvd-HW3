@@ -21,28 +21,11 @@ public class LoginPage extends AbstractPage
     {
         super(wd);
     }
-
-
-    @Override
-    public void open()
-    {
-        super.open();
-    }
     
-    public ExtendedWebElement getUsernameInput() 
+    public void login(String user, String pass)
     {
-        return usernameInput;
-    }
-
-
-    public ExtendedWebElement getPassInput() 
-    {
-        return passInput;
-    }
-
-
-    public ExtendedWebElement getConfirmButton() 
-    {
-        return confirmButton;
+        usernameInput.type(user);
+        passInput.type(pass);
+        confirmButton.click();
     }
 }

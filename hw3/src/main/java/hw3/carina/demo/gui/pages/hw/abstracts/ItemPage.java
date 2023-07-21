@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class ItemPage extends AbstractPage
 {
-
     public ItemPage(WebDriver wd)
     {
         super(wd);

@@ -1,6 +1,7 @@
 package hw3.carina.demo.gui.pages.hw;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import hw3.carina.demo.gui.components.hw.CartButton;
 import hw3.carina.demo.gui.pages.hw.abstracts.ItemPage;
 import org.openqa.selenium.WebDriver;
@@ -26,6 +27,8 @@ public class LightPage extends ItemPage
     public LightPage(WebDriver wd)
     {
         super(wd);
+        setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
+        setPageURL("inventory-item.html?id=0");
     }
 
     public void addLight()

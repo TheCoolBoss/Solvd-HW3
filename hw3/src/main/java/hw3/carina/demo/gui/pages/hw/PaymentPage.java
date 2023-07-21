@@ -21,10 +21,10 @@ public class PaymentPage extends AbstractPage
         setPageURL("checkout-step-two.html");
     }
 
-    public PurchaseDonePage openPurchaseDonePage(WebDriver wd)
+    public PurchaseDonePage openPurchaseDonePage()
     {
         payButton.click();
-        return new PurchaseDonePage(wd);
+        return new PurchaseDonePage(getDriver());
     }
 
     public ExtendedWebElement getTotal()

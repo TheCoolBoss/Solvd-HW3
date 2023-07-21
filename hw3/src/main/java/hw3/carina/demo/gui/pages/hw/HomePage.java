@@ -4,14 +4,9 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import hw3.carina.demo.gui.components.hw.CartButton;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class HomePage extends AbstractPage
 {
@@ -19,7 +14,7 @@ public class HomePage extends AbstractPage
     private ExtendedWebElement burgerMenu;
 
     @FindBy(id = "react-burger-menu-btn")
-    private WebElement burgerButton;
+    private ExtendedWebElement burgerButton;
 
     @FindBy(id = "about_sidebar_link")
     private ExtendedWebElement aboutLink;
@@ -40,35 +35,31 @@ public class HomePage extends AbstractPage
     public HomePage(WebDriver wd)
     {
         super(wd);
-        setPageOpeningStrategy(PageOpeningStrategy.BY_URL_AND_ELEMENT);
+        setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageURL("inventory.html");
-        setUiLoadedMarker(cartButton.getUiLoadedMarker());
     }
 
-    public AboutPage openAboutPage(WebDriver wd)
+    public AboutPage openAboutPage()
     {
-        //burgerMenu.click();
-        WebDriverWait wait = new WebDriverWait(wd, Duration.ofSeconds(30));
-        burgerButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("react-burger-menu-btn")));
-        burgerButton.click();
+        burgerButton.click(30, ExpectedConditions.elementToBeClickable(burgerButton.getBy()));
         aboutLink.click();
-        return new AboutPage(wd);
+        return new AboutPage(getDriver());
     }
 
-    public BackpackPage openBackpackPage(WebDriver wd)
+    public BackpackPage openBackpackPage()
     {
         backpackLink.click();
-        return new BackpackPage(wd);
+        return new BackpackPage(getDriver());
     }
 
-    public LightPage openLightPage(WebDriver wd)
+    public LightPage openLightPage()
     {
         lightLink.click();
-        return new LightPage(wd);
+        return new LightPage(getDriver());
     }
 
-    public CartButton getCartButton()
+    public CartPage openCartPage()
     {
-        return cartButton;
+        return cartButton.openCartPage();
     }
 }

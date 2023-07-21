@@ -4,7 +4,7 @@
 
 	<test name="Login Page Test">
 		<classes>
-			<class name="hw3.carina.demo.hw.LoginTest" />
+			<class name="hw3.carina.demo.hw.web.LoginTest" />
 		</classes>
 	</test>
 

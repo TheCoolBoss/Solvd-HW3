@@ -4,6 +4,7 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class CheckoutInfoPage extends AbstractPage
 {
@@ -32,9 +33,9 @@ public class CheckoutInfoPage extends AbstractPage
         zipInput.type(zip);
     }
 
-    public PaymentPage openPaymentPage(WebDriver wd)
+    public PaymentPage openPaymentPage()
     {
         continueButton.click();
-        return new PaymentPage(wd);
+        return new PaymentPage(getDriver());
     }
 }
