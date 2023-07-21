@@ -16,7 +16,7 @@ public class LoginTest implements IAbstractTest
     {
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.open();
-        loginPage.login(R.TESTDATA.get("bad_user"), R.TESTDATA.get("bad_pass"));
+        loginPage.login(LoginService.dataProvider()[1][0].toString(), LoginService.dataProvider()[1][1].toString());
         Assert.assertEquals(loginPage.getCurrentUrl(), Configuration.getRequired("DEMO.base"));
     }
 

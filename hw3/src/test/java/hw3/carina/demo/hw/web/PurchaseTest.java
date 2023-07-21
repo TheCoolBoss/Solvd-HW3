@@ -46,6 +46,7 @@ public class PurchaseTest implements IAbstractTest
         checkoutInfoPage.fillOutForm("Captain", "Falcon", "07");
 
         PaymentPage paymentPage = checkoutInfoPage.openPaymentPage();
+        Assert.assertTrue(paymentPage.isPageOpened(), "Not at payment page");
         Assert.assertTrue(paymentPage.getTotal().contains(cost), "Subtotal not equal");
 
         PurchaseDonePage purchaseDonePage = paymentPage.openPurchaseDonePage();
