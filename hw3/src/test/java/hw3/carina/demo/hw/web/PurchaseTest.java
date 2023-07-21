@@ -1,7 +1,6 @@
 package hw3.carina.demo.hw.web;
 
 import com.zebrunner.carina.core.IAbstractTest;
-import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import hw3.carina.demo.gui.pages.hw.*;
 import hw3.carina.demo.hw.services.LoginService;
 import org.testng.Assert;
@@ -40,7 +39,7 @@ public class PurchaseTest implements IAbstractTest
         String cost = backpackPage.getCost();
         Assert.assertTrue(backpackPage.allElementsPresent(backpackPage.getQuantityIcon()), "Quantity missing");
 
-        CartPage cartPage = backpackPage.getCartButton().openCartPage();
+        CartPage cartPage = backpackPage.openCartPage();
         Assert.assertTrue(cartPage.isPageOpened(), "Not at cart page");
 
         CheckoutInfoPage checkoutInfoPage = cartPage.openCheckoutInfoPage();

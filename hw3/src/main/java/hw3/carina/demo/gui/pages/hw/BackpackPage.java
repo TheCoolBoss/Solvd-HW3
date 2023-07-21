@@ -2,13 +2,16 @@ package hw3.carina.demo.gui.pages.hw;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
-import hw3.carina.demo.gui.components.hw.CartButton;
+import hw3.carina.demo.gui.components.hw.TopNavMenu;
 import hw3.carina.demo.gui.pages.hw.abstracts.ItemPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class BackpackPage extends ItemPage
 {
+    @FindBy(xpath = "//*[@id='header_container']/div[1]")
+    private TopNavMenu topNavMenu;
+
     @FindBy(id = "add-to-cart-sauce-labs-backpack")
     private ExtendedWebElement addButton;
 
@@ -17,9 +20,6 @@ public class BackpackPage extends ItemPage
 
     @FindBy(xpath = "//*[@id='inventory_item_container']/div/div/div[2]/div[3]")
     private ExtendedWebElement costLabel;
-
-    @FindBy(xpath = "//*[@id='shopping_cart_container']/a")
-    private CartButton cartButton;
 
     public BackpackPage(WebDriver wd)
     {
@@ -43,8 +43,8 @@ public class BackpackPage extends ItemPage
         return costLabel.getText();
     }
 
-    public CartButton getCartButton()
+    public CartPage openCartPage()
     {
-        return cartButton;
+        return topNavMenu.openCartPage();
     }
 }
