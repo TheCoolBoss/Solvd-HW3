@@ -15,7 +15,7 @@ public class BackpackPage extends ItemPage
     @FindBy(className = "shopping_cart_badge")
     private ExtendedWebElement quantityIcon;
 
-    @FindBy(xpath = "//*[@id='inventory_item_container']/div/div/div[2]/div[3]/text()[2]")
+    @FindBy(xpath = "//*[@id='inventory_item_container']/div/div/div[2]/div[3]")
     private ExtendedWebElement costLabel;
 
     @FindBy(xpath = "//*[@id='shopping_cart_container']/a")
@@ -38,9 +38,9 @@ public class BackpackPage extends ItemPage
         return quantityIcon;
     }
 
-    public ExtendedWebElement getCost()
+    public String getCost()
     {
-        return costLabel;
+        return costLabel.getText();
     }
 
     public CartButton getCartButton()

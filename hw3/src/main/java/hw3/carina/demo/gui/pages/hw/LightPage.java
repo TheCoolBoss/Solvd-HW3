@@ -46,9 +46,9 @@ public class LightPage extends ItemPage
         return quantityIcon;
     }
 
-    public ExtendedWebElement getCost()
+    public String getCost()
     {
-        return costLabel;
+        return costLabel.getText();
     }
 
     public CartButton getCartButton()

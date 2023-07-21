@@ -37,7 +37,7 @@ public class PurchaseTest implements IAbstractTest
         BackpackPage backpackPage = homePage.openBackpackPage();
         Assert.assertTrue(backpackPage.isPageOpened(), "Not at backpack item page");
         backpackPage.addBackpack();
-        ExtendedWebElement cost = backpackPage.getCost();
+        String cost = backpackPage.getCost();
         Assert.assertTrue(backpackPage.allElementsPresent(backpackPage.getQuantityIcon()), "Quantity missing");
 
         CartPage cartPage = backpackPage.getCartButton().openCartPage();
@@ -47,7 +47,7 @@ public class PurchaseTest implements IAbstractTest
         checkoutInfoPage.fillOutForm("Captain", "Falcon", "07");
 
         PaymentPage paymentPage = checkoutInfoPage.openPaymentPage();
-        Assert.assertEquals(cost, paymentPage.getTotal(), "Subtotal not equal");
+        Assert.assertTrue(paymentPage.getTotal().contains(cost), "Subtotal not equal");
 
         PurchaseDonePage purchaseDonePage = paymentPage.openPurchaseDonePage();
         Assert.assertTrue(purchaseDonePage.isPageOpened(), "Final page not open");

@@ -11,7 +11,7 @@ public class PaymentPage extends AbstractPage
     @FindBy(css = ".cart_button")
     private ExtendedWebElement payButton;
 
-    @FindBy(xpath = "//*[@id='checkout_summary_container']/div/div[2]/div[6]/text()[2]")
+    @FindBy(xpath = "//*[@id='checkout_summary_container']/div/div[2]/div[6]")
     private ExtendedWebElement total;
 
     public PaymentPage(WebDriver wd)
@@ -27,8 +27,8 @@ public class PaymentPage extends AbstractPage
         return new PurchaseDonePage(getDriver());
     }
 
-    public ExtendedWebElement getTotal()
+    public String getTotal()
     {
-        return total;
+        return total.getText();
     }
 }

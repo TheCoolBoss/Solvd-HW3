@@ -14,7 +14,7 @@ public abstract class ItemPage extends AbstractPage
 
     public abstract ExtendedWebElement getQuantityIcon();
 
-    public abstract ExtendedWebElement getCost();
+    public abstract String getCost();
 
     public abstract CartButton getCartButton();
 }
