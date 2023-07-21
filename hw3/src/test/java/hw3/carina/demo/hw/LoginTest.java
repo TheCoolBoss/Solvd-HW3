@@ -11,18 +11,19 @@ import hw3.carina.demo.gui.pages.hw.LoginPage;
 public class LoginTest implements IAbstractTest
 {
     private static final WebDriver DRIVER = new ChromeDriver();
-    private static final LoginPage LOGIN_PAGE = new LoginPage(DRIVER);
 
     @Test()
     public void testFailedLogin()
     {
-        LoginService.doBadLogin(LOGIN_PAGE);
+        LoginPage loginPage = new LoginPage(DRIVER);
+        LoginService.doBadLogin(loginPage);
     }
 
     @Test()
     public void testGoodLogin()
     {
-        LoginService.doGoodLogin(LOGIN_PAGE);
+        LoginPage loginPage = new LoginPage(DRIVER);
+        LoginService.doGoodLogin(DRIVER, loginPage);
     }
 
     @AfterTest

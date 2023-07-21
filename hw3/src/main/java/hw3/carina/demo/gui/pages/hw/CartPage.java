@@ -7,12 +7,18 @@ import org.openqa.selenium.support.FindBy;
 
 public class CartPage extends AbstractPage
 {
-    @FindBy(xpath = "//*[@id='shopping_cart_container']/a/svg")
-    private ExtendedWebElement cartButton;
+    @FindBy(id = "checkout")
+    private ExtendedWebElement checkoutButton;
 
     public CartPage(WebDriver wd)
     {
         super(wd);
+        setPageURL("cart.html");
     }
 
+    public CheckoutInfoPage openCheckoutInfoPage(WebDriver wd)
+    {
+        checkoutButton.click();
+        return new CheckoutInfoPage(wd);
+    }
 }
