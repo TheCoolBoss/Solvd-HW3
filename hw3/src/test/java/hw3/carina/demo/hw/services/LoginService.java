@@ -6,7 +6,6 @@ import hw3.carina.demo.gui.pages.hw.HomePage;
 import hw3.carina.demo.gui.pages.hw.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
 public class LoginService implements IDriverPool
 {

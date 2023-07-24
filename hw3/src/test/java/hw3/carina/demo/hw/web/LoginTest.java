@@ -1,6 +1,5 @@
 package hw3.carina.demo.hw.web;
 
-import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.config.Configuration;
 import hw3.carina.demo.hw.services.LoginService;
 import org.testng.Assert;
