@@ -10,27 +10,30 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TopNavMenu extends AbstractUIObject
 {
-    @FindBy(xpath = "//*[@id='shopping_cart_container']/a")
+    @FindBy(xpath = ".//*[@id='shopping_cart_container']/a")
     private ExtendedWebElement cartButton;
 
     @FindBy(id = "react-burger-menu-btn")
     private ExtendedWebElement burgerButton;
 
+    private final BurgerMenu BURGER_MENU;
+
+
     public TopNavMenu(WebDriver wd, SearchContext sc)
     {
         super(wd, sc);
+        BURGER_MENU = new BurgerMenu(wd, sc);
     }
 
     public CartPage openCartPage()
     {
-        assertElementPresent(cartButton);
         cartButton.click();
         return new CartPage(getDriver());
     }
 
-    public void openBurgerMenu()
+    public BurgerMenu openBurgerMenu()
     {
-        assertElementPresent(burgerButton);
         burgerButton.click(30, ExpectedConditions.elementToBeClickable(burgerButton.getBy()));
+        return BURGER_MENU;
     }
 }

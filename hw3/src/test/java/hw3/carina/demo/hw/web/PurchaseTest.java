@@ -33,13 +33,13 @@ public class PurchaseTest implements IAbstractTest
     {
         HomePage homePage = LOGIN_SERVICE.doGoodLogin();
 
-        BackpackPage backpackPage = homePage.openBackpackPage();
+        ItemPage backpackPage = homePage.openProductPage("Sauce Labs Backpack");
         Assert.assertTrue(backpackPage.isPageOpened(), "Not at backpack item page");
-        backpackPage.addBackpack();
+        backpackPage.clickAddButton();
         String cost = backpackPage.getCost();
         Assert.assertTrue(backpackPage.allElementsPresent(backpackPage.getQuantityIcon()), "Quantity missing");
 
-        CartPage cartPage = backpackPage.openCartPage();
+        CartPage cartPage = backpackPage.clickCartButton();
         Assert.assertTrue(cartPage.isPageOpened(), "Not at cart page");
 
         CheckoutInfoPage checkoutInfoPage = cartPage.goToCheckout();
@@ -58,10 +58,12 @@ public class PurchaseTest implements IAbstractTest
     {
         HomePage homePage = LOGIN_SERVICE.doGoodLogin();
 
-        LightPage lightPage = homePage.openLightPage();
+        ItemPage lightPage = homePage.openProductPage("Sauce Labs Bike Light");
         Assert.assertTrue(lightPage.isPageOpened());
-        lightPage.addLight();
-        lightPage.removeLight();
+
+        //Remove button is the same one, so doing this for now
+        lightPage.clickAddButton();
+        lightPage.clickAddButton();
         Assert.assertFalse(lightPage.getQuantityIcon().isElementPresent(5), "Cart quantity icon is visible");
     }
 }

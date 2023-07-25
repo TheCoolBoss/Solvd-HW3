@@ -3,20 +3,18 @@ package hw3.carina.demo.gui.pages.hw;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
+import hw3.carina.demo.gui.components.hw.BurgerMenu;
+import hw3.carina.demo.gui.components.hw.ProductComponent;
 import hw3.carina.demo.gui.components.hw.TopNavMenu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class HomePage extends AbstractPage
 {
-    @FindBy(xpath = "//*[@id='header_container']/div[1]")
+    @FindBy(xpath = ".//*[@id='header_container']/div[1]")
     private TopNavMenu topNavMenu;
-
-    @FindBy(id = "about_sidebar_link")
-    private ExtendedWebElement aboutLink;
-
-    @FindBy(id = "logout_sidebar_link")
-    private ExtendedWebElement logoutLink;
 
     @FindBy(id = "item_4_title_link")
     private ExtendedWebElement backpackLink;
@@ -24,6 +22,8 @@ public class HomePage extends AbstractPage
     @FindBy(id = "item_0_title_link")
     private ExtendedWebElement lightLink;
 
+    @FindBy(className = "inventory_item")
+    private List<ProductComponent> products;
 
     public HomePage(WebDriver wd)
     {
@@ -34,21 +34,21 @@ public class HomePage extends AbstractPage
 
     public AboutPage openAboutPage()
     {
-        topNavMenu.openBurgerMenu();
-        aboutLink.click();
-        return new AboutPage(getDriver());
+        BurgerMenu burgerMenu = topNavMenu.openBurgerMenu();
+        return burgerMenu.goToAboutLink();
     }
 
-    public BackpackPage openBackpackPage()
+    public ItemPage openProductPage(String productName)
     {
-        backpackLink.click();
-        return new BackpackPage(getDriver());
-    }
+        for (ProductComponent pc: products)
+        {
+            if (pc.getTitleText().equals(productName))
+            {
+                return pc.clickTitle();
+            }
+        }
 
-    public LightPage openLightPage()
-    {
-        lightLink.click();
-        return new LightPage(getDriver());
+        return null;
     }
 
     public CartPage openCartPage()
