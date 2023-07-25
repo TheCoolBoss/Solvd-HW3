@@ -22,10 +22,10 @@ public class LoginPage extends AbstractPage
         super(wd);
     }
     
-    public void login(String user, String pass)
+    public void login(String[] credentials)
     {
-        usernameInput.type(user);
-        passInput.type(pass);
+        usernameInput.type(credentials[0]);
+        passInput.type(credentials[1]);
         confirmButton.click();
     }
 }
