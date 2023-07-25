@@ -1,7 +1,7 @@
 package hw3.carina.demo.hw.web;
 
 import com.zebrunner.carina.utils.config.Configuration;
-import hw3.carina.demo.hw.services.LoginService;
+import hw3.carina.demo.gui.services.LoginService;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.zebrunner.carina.core.IAbstractTest;

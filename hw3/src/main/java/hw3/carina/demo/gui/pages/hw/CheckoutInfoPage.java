@@ -32,7 +32,7 @@ public class CheckoutInfoPage extends AbstractPage
         zipInput.type(zip);
     }
 
-    public PaymentPage openPaymentPage()
+    public PaymentPage goToPayment()
     {
         continueButton.click();
         return new PaymentPage(getDriver());

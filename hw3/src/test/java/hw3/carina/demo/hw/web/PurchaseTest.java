@@ -2,7 +2,7 @@ package hw3.carina.demo.hw.web;
 
 import com.zebrunner.carina.core.IAbstractTest;
 import hw3.carina.demo.gui.pages.hw.*;
-import hw3.carina.demo.hw.services.LoginService;
+import hw3.carina.demo.gui.services.LoginService;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,14 +17,14 @@ public class PurchaseTest implements IAbstractTest
 
         CartPage cartPage = homePage.openCartPage();
 
-        CheckoutInfoPage checkoutInfoPage = cartPage.openCheckoutInfoPage();
+        CheckoutInfoPage checkoutInfoPage = cartPage.goToCheckout();
         Assert.assertTrue(checkoutInfoPage.isPageOpened(), "Not at info page");
         checkoutInfoPage.fillOutForm("Captain", "Falcon", "07");
 
-        PaymentPage paymentPage = checkoutInfoPage.openPaymentPage();
+        PaymentPage paymentPage = checkoutInfoPage.goToPayment();
         Assert.assertTrue(paymentPage.isPageOpened(), "Not at payment page");
 
-        PurchaseDonePage purchaseDonePage = paymentPage.openPurchaseDonePage();
+        PurchaseDonePage purchaseDonePage = paymentPage.submitPayment();
         Assert.assertTrue(purchaseDonePage.isPageOpened(), "Final page not open");
     }
 
@@ -42,14 +42,14 @@ public class PurchaseTest implements IAbstractTest
         CartPage cartPage = backpackPage.openCartPage();
         Assert.assertTrue(cartPage.isPageOpened(), "Not at cart page");
 
-        CheckoutInfoPage checkoutInfoPage = cartPage.openCheckoutInfoPage();
+        CheckoutInfoPage checkoutInfoPage = cartPage.goToCheckout();
         checkoutInfoPage.fillOutForm("Captain", "Falcon", "07");
 
-        PaymentPage paymentPage = checkoutInfoPage.openPaymentPage();
+        PaymentPage paymentPage = checkoutInfoPage.goToPayment();
         Assert.assertTrue(paymentPage.isPageOpened(), "Not at payment page");
         Assert.assertTrue(paymentPage.getTotal().contains(cost), "Subtotal not equal");
 
-        PurchaseDonePage purchaseDonePage = paymentPage.openPurchaseDonePage();
+        PurchaseDonePage purchaseDonePage = paymentPage.submitPayment();
         Assert.assertTrue(purchaseDonePage.isPageOpened(), "Final page not open");
     }
 
@@ -62,6 +62,6 @@ public class PurchaseTest implements IAbstractTest
         Assert.assertTrue(lightPage.isPageOpened());
         lightPage.addLight();
         lightPage.removeLight();
-        Assert.assertFalse(lightPage.getQuantityIcon().isElementPresent(), "Cart quantity icon is visible");
+        Assert.assertFalse(lightPage.getQuantityIcon().isElementPresent(5), "Cart quantity icon is visible");
     }
 }

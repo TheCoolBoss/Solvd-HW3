@@ -21,7 +21,7 @@ public class PaymentPage extends AbstractPage
         setPageURL("checkout-step-two.html");
     }
 
-    public PurchaseDonePage openPurchaseDonePage()
+    public PurchaseDonePage submitPayment()
     {
         payButton.click();
         return new PurchaseDonePage(getDriver());

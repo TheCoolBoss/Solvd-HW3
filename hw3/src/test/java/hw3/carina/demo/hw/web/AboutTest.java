@@ -3,7 +3,7 @@ package hw3.carina.demo.hw.web;
 import com.zebrunner.carina.core.IAbstractTest;
 import hw3.carina.demo.gui.pages.hw.AboutPage;
 import hw3.carina.demo.gui.pages.hw.HomePage;
-import hw3.carina.demo.hw.services.LoginService;
+import hw3.carina.demo.gui.services.LoginService;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

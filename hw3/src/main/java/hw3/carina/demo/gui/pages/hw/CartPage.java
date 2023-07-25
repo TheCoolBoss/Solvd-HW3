@@ -16,7 +16,7 @@ public class CartPage extends AbstractPage
         setPageURL("cart.html");
     }
 
-    public CheckoutInfoPage openCheckoutInfoPage()
+    public CheckoutInfoPage goToCheckout()
     {
         checkoutButton.click();
         return new CheckoutInfoPage(getDriver());

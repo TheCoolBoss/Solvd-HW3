@@ -1,4 +1,4 @@
-package hw3.carina.demo.hw.services;
+package hw3.carina.demo.gui.services;
 
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.webdriver.IDriverPool;
