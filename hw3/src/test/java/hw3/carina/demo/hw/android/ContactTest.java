@@ -33,6 +33,7 @@ public class ContactTest implements IAbstractTest
 
         MainContactsPage homePage = INSERT_SERVICE.getPastPopup();
         Assert.assertTrue(homePage.isPageOpened(), "Contacts page is not opened");
+        INSERT_SERVICE.insertContact(info);
 
         SelectPage selectPage = homePage.clickSelectOptions();
         selectPage.clickSelectChoice();
@@ -50,6 +51,7 @@ public class ContactTest implements IAbstractTest
 
         MainContactsPage homePage = INSERT_SERVICE.getPastPopup();
         Assert.assertTrue(homePage.isPageOpened(), "Contacts page is not opened");
+        INSERT_SERVICE.insertContact(info);
 
         Assert.assertTrue(homePage.isNamePresent(combinedName), "Name is not present.");
         ContactInfoPage infoPage = homePage.clickContactName(combinedName);
