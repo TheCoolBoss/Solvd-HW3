@@ -1,11 +1,14 @@
 package hw3.carina.demo.gui.pages.hw.android;
 
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.MainContactsBase;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.PopupBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class PopupPage extends AbstractPage
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = PopupBase.class)
+public class PopupPage extends PopupBase
 {
     @FindBy(id = "android:id/button2")
     private ExtendedWebElement skipButton;
@@ -15,9 +18,9 @@ public class PopupPage extends AbstractPage
         super(wd);
     }
 
-    public MainContactsPage clickSkip()
+    public MainContactsBase clickSkip()
     {
         skipButton.click();
-        return new MainContactsPage(getDriver());
+        return initPage(getDriver(), MainContactsBase.class);
     }
 }

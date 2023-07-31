@@ -3,6 +3,7 @@ package hw3.carina.demo.hw.android;
 import com.zebrunner.carina.core.IAbstractTest;
 import hw3.carina.demo.gui.pages.hw.android.MainContactsPage;
 import hw3.carina.demo.gui.pages.hw.android.EnterContactInfoPage;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.EnterContactBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.util.regex.Matcher;
@@ -23,7 +24,7 @@ public class InputTest implements IAbstractTest
         MainContactsPage homePage = new MainContactsPage(getDriver());
         Assert.assertTrue(homePage.isPageOpened(), "Contacts page is not opened");
 
-        EnterContactInfoPage newContact = homePage.clickNewContact();
+        EnterContactBase newContact = homePage.clickNewContact();
         Assert.assertTrue(newContact.isPageOpened(), "Not on new contact input page");
 
         newContact.enterPhone("abc");
@@ -38,7 +39,7 @@ public class InputTest implements IAbstractTest
         MainContactsPage homePage = new MainContactsPage(getDriver());
         Assert.assertTrue(homePage.isPageOpened(), "Contacts page is not opened");
 
-        EnterContactInfoPage newContact = homePage.clickNewContact();
+        EnterContactBase newContact = homePage.clickNewContact();
         Assert.assertTrue(newContact.isPageOpened(), "Not on new contact input page");
 
         newContact.enterPhone("[]{}");

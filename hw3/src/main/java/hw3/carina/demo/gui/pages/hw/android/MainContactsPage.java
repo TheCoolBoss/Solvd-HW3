@@ -1,14 +1,20 @@
 package hw3.carina.demo.gui.pages.hw.android;
 
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import hw3.carina.demo.gui.components.hw.android.ContactComponent;
 import hw3.carina.demo.gui.components.hw.android.BottomNavBar;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.ContactInfoBase;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.EnterContactBase;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.MainContactsBase;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.SelectBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
-public class MainContactsPage extends AbstractPage
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = MainContactsBase.class)
+public class MainContactsPage extends MainContactsBase
 {
     @FindBy(id = "com.google.android.contacts:id/bottom_nav")
     private BottomNavBar navBar;
@@ -28,18 +34,14 @@ public class MainContactsPage extends AbstractPage
     public MainContactsPage(WebDriver wd)
     {
         super(wd);
+        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+        setUiLoadedMarker(newContactButton);
     }
 
-    @Override
-    public boolean isPageOpened()
-    {
-        return newContactButton.isElementPresent();
-    }
-
-    public EnterContactInfoPage clickNewContact()
+    public EnterContactBase clickNewContact()
     {
         newContactButton.click();
-        return new EnterContactInfoPage(getDriver());
+        return initPage(getDriver(), EnterContactBase.class);
     }
 
     public int getContactListSize()
@@ -60,7 +62,7 @@ public class MainContactsPage extends AbstractPage
         return false;
     }
 
-    public ContactInfoPage clickContactName(String name)
+    public ContactInfoBase clickContactName(String name)
     {
         for (ContactComponent contactComponent : contactList)
         {
@@ -78,9 +80,9 @@ public class MainContactsPage extends AbstractPage
         searchBar.type(name);
     }
 
-    public SelectPage clickSelectOptions()
+    public SelectBase clickSelectOptions()
     {
         selectContactsButton.click();
-        return new SelectPage(getDriver());
+        return initPage(getDriver(), SelectBase.class);
     }
 }

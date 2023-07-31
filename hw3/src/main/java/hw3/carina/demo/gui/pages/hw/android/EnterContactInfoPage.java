@@ -1,13 +1,16 @@
 package hw3.carina.demo.gui.pages.hw.android;
 
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.ContactInfoBase;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.EnterContactBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class EnterContactInfoPage extends AbstractPage implements IMobileUtils
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = EnterContactBase.class)
+public class EnterContactInfoPage extends EnterContactBase implements IMobileUtils
 {
     //Not too concerned with dropdowns for the moment
     @FindBy(xpath = "//android.widget.EditText[@hint='First name']")
@@ -35,10 +38,10 @@ public class EnterContactInfoPage extends AbstractPage implements IMobileUtils
         setUiLoadedMarker(saveButton);
     }
 
-    public ContactInfoPage clickSaveButton()
+    public ContactInfoBase clickSaveButton()
     {
         saveButton.click();
-        return new ContactInfoPage(getDriver());
+        return initPage(getDriver(), ContactInfoBase.class);
     }
 
     public void enterFirstName(String name)

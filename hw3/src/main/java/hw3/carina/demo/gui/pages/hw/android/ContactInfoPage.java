@@ -1,14 +1,18 @@
 package hw3.carina.demo.gui.pages.hw.android;
 
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import hw3.carina.demo.gui.components.hw.android.ContactToolbar;
 import hw3.carina.demo.gui.components.hw.android.InfoComponent;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.ContactInfoBase;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.ContactOptionsBase;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.DeleteConfirmBase;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.EnterContactBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
 
-public class ContactInfoPage extends AbstractPage
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ContactInfoBase.class)
+public class ContactInfoPage extends ContactInfoBase
 {
     @FindBy(id = "com.google.android.contacts:id/toolbar")
     private ContactToolbar toolbar;
@@ -28,12 +32,12 @@ public class ContactInfoPage extends AbstractPage
 
     public void delete()
     {
-        ContactOptionsMenu menu = toolbar.openOptionsMenu();
-        DeleteConfirmationPage deletePage = menu.clickDelete();
+        ContactOptionsBase menu = toolbar.openOptionsMenu();
+        DeleteConfirmBase deletePage = menu.clickDelete();
         deletePage.clickDelete();
     }
 
-    public EnterContactInfoPage clickEdit()
+    public EnterContactBase clickEdit()
     {
         return toolbar.openEditPage();
     }

@@ -1,13 +1,15 @@
 package hw3.carina.demo.gui.pages.hw.android;
 
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import hw3.carina.demo.gui.components.hw.android.SelectContactComponent;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.SelectBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
-public class SelectPage extends AbstractPage
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SelectBase.class)
+public class SelectPage extends SelectBase
 {
     @FindBy(xpath = ".//android.widget.ImageButton[@content-desc='close']")
     private ExtendedWebElement closeButton;

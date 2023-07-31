@@ -1,14 +1,15 @@
 package hw3.carina.demo.gui.components.hw.android;
 
+import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
-import hw3.carina.demo.gui.pages.hw.android.ContactOptionsMenu;
-import hw3.carina.demo.gui.pages.hw.android.EnterContactInfoPage;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.ContactOptionsBase;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.EnterContactBase;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class ContactToolbar extends AbstractUIObject
+public class ContactToolbar extends AbstractUIObject implements ICustomTypePageFactory
 {
     @FindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
     private ExtendedWebElement goBackButton;
@@ -32,15 +33,15 @@ public class ContactToolbar extends AbstractUIObject
         goBackButton.click();
     }
 
-    public ContactOptionsMenu openOptionsMenu()
+    public ContactOptionsBase openOptionsMenu()
     {
         moreOptionsButton.click();
-        return new ContactOptionsMenu(getDriver());
+        return initPage(getDriver(), ContactOptionsBase.class);
     }
 
-    public EnterContactInfoPage openEditPage()
+    public EnterContactBase openEditPage()
     {
         editButton.click();
-        return new EnterContactInfoPage(getDriver());
+        return initPage(getDriver(), EnterContactBase.class);
     }
 }
