@@ -69,9 +69,4 @@ public class EnterContactInfoPage extends EnterContactBase implements IMobileUti
         swipe(emailInput);
         emailInput.type(email);
     }
-
-    public String getPhoneVal()
-    {
-        return phoneInput.getText();
-    }
 }

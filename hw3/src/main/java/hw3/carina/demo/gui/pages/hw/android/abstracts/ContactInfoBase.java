@@ -1,7 +1,6 @@
 package hw3.carina.demo.gui.pages.hw.android.abstracts;
 
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
-import hw3.carina.demo.gui.pages.hw.android.EnterContactInfoPage;
 import org.openqa.selenium.WebDriver;
 
 public abstract class ContactInfoBase extends AbstractPage
@@ -18,4 +17,6 @@ public abstract class ContactInfoBase extends AbstractPage
     public abstract EnterContactBase clickEdit();
 
     public abstract boolean verifyEmail(String email);
+
+    public abstract void clickFave();
 }

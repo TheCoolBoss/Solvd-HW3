@@ -33,6 +33,11 @@ public class ContactToolbar extends AbstractUIObject implements ICustomTypePageF
         goBackButton.click();
     }
 
+    public void clickFave()
+    {
+        faveButton.click();
+    }
+
     public ContactOptionsBase openOptionsMenu()
     {
         moreOptionsButton.click();

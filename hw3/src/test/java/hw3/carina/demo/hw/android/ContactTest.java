@@ -2,11 +2,7 @@ package hw3.carina.demo.hw.android;
 
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
-import hw3.carina.demo.gui.pages.hw.android.*;
-import hw3.carina.demo.gui.pages.hw.android.abstracts.ContactInfoBase;
-import hw3.carina.demo.gui.pages.hw.android.abstracts.EnterContactBase;
-import hw3.carina.demo.gui.pages.hw.android.abstracts.MainContactsBase;
-import hw3.carina.demo.gui.pages.hw.android.abstracts.SelectBase;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.*;
 import hw3.carina.demo.gui.services.InsertService;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -88,6 +84,24 @@ public class ContactTest implements IAbstractTest
         int newCount = homePage.getContactListSize();
 
         Assert.assertEquals(newCount, initialCount - 1,  "Size has not been reduced by 1");
+    }
+
+    @Test(dataProvider = "allInfo")
+    public void faveContact(String[] info)
+    {
+        String firstName = info[0];
+        String lastName = info[1];
+        String combinedName = firstName + " " + lastName;
+
+        MainContactsBase homePage = INSERT_SERVICE.getPastPopup();
+        Assert.assertTrue(homePage.isPageOpened(), "Contacts page is not opened");
+        INSERT_SERVICE.insertContact(info);
+
+        ContactInfoBase contactInfo = homePage.clickContactName(combinedName);
+        contactInfo.clickFave();
+        contactInfo.clickGoBack();
+        FavesBase faves = homePage.clickFavesButton();
+        Assert.assertTrue(faves.isNamePresent(combinedName));
     }
 
     @DataProvider(name = "allInfo")

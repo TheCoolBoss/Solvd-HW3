@@ -30,6 +30,11 @@ public class ContactInfoPage extends ContactInfoBase
         toolbar.clickGoBack();
     }
 
+    public void clickFave()
+    {
+        toolbar.clickFave();
+    }
+
     public void delete()
     {
         ContactOptionsBase menu = toolbar.openOptionsMenu();

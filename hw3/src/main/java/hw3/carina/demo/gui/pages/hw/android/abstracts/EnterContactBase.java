@@ -21,6 +21,4 @@ public abstract class EnterContactBase extends AbstractPage
     public abstract void enterPhone(String phone);
 
     public abstract void enterEmail(String email);
-
-    public abstract String getPhoneVal();
 }

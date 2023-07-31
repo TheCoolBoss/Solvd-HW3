@@ -5,10 +5,7 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import hw3.carina.demo.gui.components.hw.android.ContactComponent;
 import hw3.carina.demo.gui.components.hw.android.BottomNavBar;
-import hw3.carina.demo.gui.pages.hw.android.abstracts.ContactInfoBase;
-import hw3.carina.demo.gui.pages.hw.android.abstracts.EnterContactBase;
-import hw3.carina.demo.gui.pages.hw.android.abstracts.MainContactsBase;
-import hw3.carina.demo.gui.pages.hw.android.abstracts.SelectBase;
+import hw3.carina.demo.gui.pages.hw.android.abstracts.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import java.util.List;
@@ -84,5 +81,10 @@ public class MainContactsPage extends MainContactsBase
     {
         selectContactsButton.click();
         return initPage(getDriver(), SelectBase.class);
+    }
+
+    public FavesBase clickFavesButton()
+    {
+        return navBar.clickFaves();
     }
 }
