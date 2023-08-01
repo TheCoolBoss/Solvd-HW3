@@ -1,33 +1,30 @@
 package hw3.carina.demo.hw.web;
 
 import com.zebrunner.carina.utils.R;
-import com.zebrunner.carina.utils.config.Configuration;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
-import hw3.carina.demo.gui.pages.hw.HomePage;
-import hw3.carina.demo.gui.services.LoginService;
+import hw3.carina.demo.gui.pages.hw.web.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.zebrunner.carina.core.IAbstractTest;
-import hw3.carina.demo.gui.pages.hw.LoginPage;
+import hw3.carina.demo.gui.pages.hw.web.LoginPage;
 
 public class LoginTest implements IAbstractTest
 {
-    private static final LoginService LOGIN_SERVICE = new LoginService();
     @Test(dataProvider = "badLoginProvider")
-    public void testFailedLogin(String[] credentials)
+    public void testFailedLogin(String user, String pass)
     {
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.open();
-        loginPage.login(credentials);
-        Assert.assertEquals(loginPage.getCurrentUrl(), Configuration.getRequired("DEMO.base"));
+        loginPage.sendLoginInfo(user, pass);
+        Assert.assertTrue(loginPage.isPageOpened(), "Not on login page");
     }
 
     @Test(dataProvider = "goodLoginProvider")
-    public void testGoodLogin(String[] credentials)
+    public void testGoodLogin(String user, String pass)
     {
-        LOGIN_SERVICE.login(credentials);
-        HomePage homePage = new HomePage(getDriver());
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.open();
+        HomePage homePage = loginPage.loginToHome(user, pass);
         Assert.assertTrue(homePage.isPageOpened(), "Not at home page");
     }
 
@@ -36,7 +33,8 @@ public class LoginTest implements IAbstractTest
     {
         return new Object[][]
                 {
-                        {R.TESTDATA.get("good_user"), R.TESTDATA.get("good_pass")}
+                        {R.TESTDATA.get("good_user")},
+                        {R.TESTDATA.get("good_pass")}
                 };
     }
 
@@ -45,7 +43,8 @@ public class LoginTest implements IAbstractTest
     {
         return new Object[][]
                 {
-                        {R.TESTDATA.get("bad_user"), R.TESTDATA.get("bad_pass")}
+                        {R.TESTDATA.get("bad_user")},
+                        {R.TESTDATA.get("bad_pass")}
                 };
     }
 }

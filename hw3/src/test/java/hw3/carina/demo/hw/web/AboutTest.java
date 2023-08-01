@@ -2,23 +2,22 @@ package hw3.carina.demo.hw.web;
 
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
-import hw3.carina.demo.gui.pages.hw.AboutPage;
-import hw3.carina.demo.gui.pages.hw.HomePage;
-import hw3.carina.demo.gui.services.LoginService;
+import hw3.carina.demo.gui.pages.hw.web.AboutPage;
+import hw3.carina.demo.gui.pages.hw.web.HomePage;
+import hw3.carina.demo.gui.pages.hw.web.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class AboutTest implements IAbstractTest
 {
-    private static final LoginService LOGIN_SERVICE = new LoginService();
-
     @Test(dataProvider = "goodLoginProvider")
-    public void goToAboutLink(String[] credentials)
+    public void goToAboutLink(String user, String pass)
     {
-        LOGIN_SERVICE.login(credentials);
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.open();
+        HomePage homePage = loginPage.loginToHome(user, pass);
 
-        HomePage homePage = new HomePage(getDriver());
         AboutPage aboutPage = homePage.openAboutPage();
         Assert.assertTrue(aboutPage.isPageOpened(), "Not at about (company) page");
     }
@@ -28,7 +27,8 @@ public class AboutTest implements IAbstractTest
     {
         return new Object[][]
                 {
-                        {R.TESTDATA.get("good_user"), R.TESTDATA.get("good_pass")}
+                        {R.TESTDATA.get("good_user")},
+                        {R.TESTDATA.get("good_pass")}
                 };
     }
 }
