@@ -11,6 +11,9 @@ public class SelectContactComponent extends AbstractUIObject
     @FindBy(xpath = ".//android.widget.TextView[@resource-id='com.google.android.contacts:id/cliv_name_textview']")
     private ExtendedWebElement contactName;
 
+    @FindBy(xpath = "//android.widget.TextView")
+    private ExtendedWebElement contactLetterImage;
+
     public SelectContactComponent(WebDriver wd, SearchContext sc)
     {
         super(wd, sc);
@@ -24,5 +27,20 @@ public class SelectContactComponent extends AbstractUIObject
     public void clickContact()
     {
         contactName.click();
+    }
+
+    public ExtendedWebElement getContactLetterImage()
+    {
+        return contactLetterImage;
+    }
+
+    public String getLetterDesc()
+    {
+        if (contactLetterImage.isElementPresent())
+        {
+            return contactLetterImage.getAttribute("content-desc");
+        }
+
+        return "";
     }
 }

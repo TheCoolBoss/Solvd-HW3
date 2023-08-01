@@ -49,4 +49,9 @@ public class ContactToolbar extends AbstractUIObject implements ICustomTypePageF
         editButton.click();
         return initPage(getDriver(), EnterContactBase.class);
     }
+
+    public ExtendedWebElement getMoreOptionsButton()
+    {
+        return moreOptionsButton;
+    }
 }

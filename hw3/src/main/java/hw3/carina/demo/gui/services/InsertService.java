@@ -16,14 +16,8 @@ public class InsertService implements IDriverPool, IAbstractTest
         return popupPage.clickSkip();
     }
 
-    public void insertContact(String[] info)
+    public void insertContact(String firstName, String lastName, String company, String phone, String email)
     {
-        String firstName = info[0];
-        String lastName = info[1];
-        String company = info[2];
-        String phone = info[3];
-        String email = info[4];
-
         MainContactsBase homePage = initPage(getDriver(), MainContactsBase.class);
         EnterContactBase newContact = homePage.clickNewContact();
 

@@ -31,7 +31,6 @@ public class MainContactsPage extends MainContactsBase
     public MainContactsPage(WebDriver wd)
     {
         super(wd);
-        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(newContactButton);
     }
 

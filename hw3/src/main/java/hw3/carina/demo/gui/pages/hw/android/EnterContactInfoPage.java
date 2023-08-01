@@ -34,7 +34,6 @@ public class EnterContactInfoPage extends EnterContactBase implements IMobileUti
     public EnterContactInfoPage(WebDriver wd)
     {
         super(wd);
-        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(saveButton);
     }
 
