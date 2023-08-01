@@ -1,7 +1,5 @@
 package hw3.carina.demo.hw.api;
 
-// import org.apache.logging.log4j.LogManager;
-// import org.apache.logging.log4j.Logger;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.testng.annotations.Test;
 import com.zebrunner.carina.api.apitools.validation.JsonCompareKeywords;
@@ -14,9 +12,6 @@ import io.restassured.response.Response;
 
 public class HttpTest implements IAbstractTest
 {
-    //Left here just in case I need it later
-    //private static final Logger LOGGER = LogManager.getLogger(HttpTest.class);
-
     public Response postLogic()
     {
         PhotosPostMethod post = new PhotosPostMethod();
@@ -32,7 +27,7 @@ public class HttpTest implements IAbstractTest
     {
         PhotosGetMethod get = new PhotosGetMethod();
         get.callAPIExpectSuccess();
-        get.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey() + "albumId" + "id" + "title" + "url" + "thumbnailUrl");
+        get.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
         get.validateResponseAgainstSchema("api/photos/_get/photo.schema");
     }
 
@@ -62,7 +57,8 @@ public class HttpTest implements IAbstractTest
 
         PhotosPatchMethod patch = new PhotosPatchMethod();
 
-        patch.replaceUrlPlaceholder("base_url", Configuration.getRequired("endpoint_url") + "/" + id);
+        patch.replaceUrlPlaceholder("base_url", Configuration.getRequired("endpoint_url"));
+        patch.replaceUrlPlaceholder("id", id);
         patch.setProperties("api/photos/_patch/patch.properties");
         patch.callAPIExpectSuccess();
         patch.validateResponse();
