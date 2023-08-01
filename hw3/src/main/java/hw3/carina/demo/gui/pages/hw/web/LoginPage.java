@@ -23,7 +23,7 @@ public class LoginPage extends AbstractPage
     {
         super(wd);
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
-        setPageURL(Configuration.getRequired("DEMO.base"));
+        setPageAbsoluteURL(Configuration.getRequired("DEMO.base"));
     }
     
     public void sendLoginInfo(String user, String pass)
