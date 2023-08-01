@@ -1,21 +1,18 @@
-package hw3.carina.demo.hw;
+package hw3.carina.demo.api.hw;
 
 import com.zebrunner.carina.api.AbstractApiMethodV2;
 import com.zebrunner.carina.api.annotation.Endpoint;
+import com.zebrunner.carina.api.annotation.RequestTemplatePath;
 import com.zebrunner.carina.api.annotation.ResponseTemplatePath;
 import com.zebrunner.carina.api.annotation.SuccessfulHttpStatus;
 import com.zebrunner.carina.api.http.HttpMethodType;
 import com.zebrunner.carina.api.http.HttpResponseStatusType;
-import com.zebrunner.carina.utils.config.Configuration;
+import org.apache.http.HttpStatus;
 
-@Endpoint(url = "${base_url}/photos", methodType = HttpMethodType.GET)
-@ResponseTemplatePath(path = "api/photos/_get/photoRs.json")
+@Endpoint(url = "${base_url}", methodType = HttpMethodType.PATCH)
+@RequestTemplatePath(path = "api/photos/_patch/patchRq.json")
+@ResponseTemplatePath(path = "api/photos/_patch/patchRs.json")
 @SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
-public class PhotosGet extends AbstractApiMethodV2
-{
-    public PhotosGet()
-    {
-        replaceUrlPlaceholder("base_url", Configuration.getRequired("api_url"));
-    }
-
+public class PhotosPatchMethod extends AbstractApiMethodV2
+{ 
 }

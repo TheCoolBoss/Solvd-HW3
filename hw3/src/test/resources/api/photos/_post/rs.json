@@ -1,10 +1,11 @@
-{
-  "0": {
-    "albumId": 1,
-    "id": 1,
-    <#if title??>"title": "${title}",</#if>
-    "url": "doriyah.com",
-    "thumbnailUrl": "ganondorf.com"
-  },
-    "id": 5001
-}
+
+  {
+    "0": {
+      <#if albumId??>"albumId": "regex:[0-9]{2}",</#if>
+      <#if id??>"id": "regex:[0-9]{3}",</#if>
+      <#if title??>"title": "type:String",</#if>
+      <#if url??>"url": "type:String",</#if>
+      <#if thumbnailUrl??>"thumbnailUrl": "type:String"</#if>
+    },
+      "id": "regex:[0-9]+"
+  }

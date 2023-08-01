@@ -19,6 +19,9 @@
       "thumbnailUrl": {
         "type": "string"
       }
-    }
+    },
+    "required": [
+      "title"
+    ]
   }
 }
