@@ -7,7 +7,6 @@ import com.zebrunner.carina.utils.R;
 import hw3.carina.demo.gui.pages.hw.android.abstracts.*;
 import hw3.carina.demo.gui.services.InsertService;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class ContactTest implements IAbstractTest, IAbstractDataProvider
@@ -114,6 +113,7 @@ public class ContactTest implements IAbstractTest, IAbstractDataProvider
 
         Assert.assertTrue(homePage.isPageOpened(), "Contacts page is not opened");
         FavesBase faves = homePage.clickFavesButton();
+        Assert.assertTrue(faves.isPageOpened(), "Not on favorites page");
         Assert.assertTrue(faves.isNamePresent(combinedName));
     }
 }

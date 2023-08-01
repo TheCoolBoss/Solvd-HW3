@@ -2,7 +2,6 @@ package hw3.carina.demo.gui.pages.hw.android;
 
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import hw3.carina.demo.gui.components.hw.android.ContactComponent;
 import hw3.carina.demo.gui.components.hw.android.BottomNavBar;
 import hw3.carina.demo.gui.pages.hw.android.abstracts.*;

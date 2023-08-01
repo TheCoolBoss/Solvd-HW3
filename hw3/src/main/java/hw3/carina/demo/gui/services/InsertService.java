@@ -2,7 +2,6 @@ package hw3.carina.demo.gui.services;
 
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.webdriver.IDriverPool;
-import hw3.carina.demo.gui.pages.hw.android.EnterContactInfoPage;
 import hw3.carina.demo.gui.pages.hw.android.abstracts.ContactInfoBase;
 import hw3.carina.demo.gui.pages.hw.android.abstracts.EnterContactBase;
 import hw3.carina.demo.gui.pages.hw.android.abstracts.MainContactsBase;
