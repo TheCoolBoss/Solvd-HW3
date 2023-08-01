@@ -1,4 +1,4 @@
-package hw3.carina.demo.tests;
+package hw3.carina.demo.hw.api;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +12,6 @@ import hw3.carina.demo.hw.PhotosPatch;
 import hw3.carina.demo.hw.PhotosPost;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
 
 public class HttpTest implements IAbstractTest
 {
