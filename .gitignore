@@ -23,6 +23,7 @@
 hs_err_pid*
 
 #Folders
+.idea
 .vscode
 reports
 hw3/.settings
