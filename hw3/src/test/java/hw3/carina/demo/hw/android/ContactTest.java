@@ -84,13 +84,15 @@ public class ContactTest implements IAbstractTest, IAbstractDataProvider
         Assert.assertTrue(homePage.isPageOpened(), "Contacts page is not opened");
         Assert.assertTrue(homePage.isNamePresent(combinedName), "Name already not in contacts");
 
-        int initialCount = homePage.getContactListSize();
+        int initialCount = homePage.getContactListSize() - homePage.getFaveCount();
+
         ContactInfoBase infoPage = homePage.clickContactName(combinedName);
         Assert.assertTrue(infoPage.isPageOpened(), "Not at contact info");
         infoPage.delete();
 
         Assert.assertTrue(homePage.isPageOpened(), "Contacts page is not opened");
-        int newCount = homePage.getContactListSize();
+
+        int newCount = homePage.getContactListSize() - homePage.getFaveCount();
 
         Assert.assertEquals(newCount, initialCount - 1,  "Size has not been reduced by 1");
     }

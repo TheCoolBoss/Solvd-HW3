@@ -70,6 +70,23 @@ public class MainContactsPage extends MainContactsBase
         return null;
     }
 
+    public int getFaveCount()
+    {
+        int ret = 0;
+        for (ContactComponent cc : contactList)
+        {
+            //This is when the first "alphabetized" category is reached
+            if (cc.getTextDesc().length() == 1)
+            {
+                break;
+            }
+
+            ret++;
+        }
+
+        return ret;
+    }
+
     public void searchName(String name)
     {
         searchBar.type(name);
