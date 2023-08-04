@@ -56,8 +56,7 @@ public class HttpTest implements IAbstractTest
         String id = createdResponse.jsonPath().getString("id");
 
         PhotosPatchMethod patch = new PhotosPatchMethod();
-
-        patch.replaceUrlPlaceholder("base_url", Configuration.getRequired("endpoint_url"));
+        
         patch.replaceUrlPlaceholder("id", id);
         patch.setProperties("api/photos/_patch/patch.properties");
         patch.callAPIExpectSuccess();
