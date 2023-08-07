@@ -21,4 +21,6 @@ public abstract class MainContactsBase extends AbstractPage
     public abstract SelectBase clickSelectOptions();
 
     public abstract FavesBase clickFavesButton();
+
+    public abstract int getFaveCount();
 }

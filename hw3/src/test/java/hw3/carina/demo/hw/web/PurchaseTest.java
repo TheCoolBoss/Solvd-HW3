@@ -2,28 +2,33 @@ package hw3.carina.demo.hw.web;
 
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
-import hw3.carina.demo.gui.pages.hw.*;
-import hw3.carina.demo.gui.services.LoginService;
+import hw3.carina.demo.gui.pages.hw.web.*;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class PurchaseTest implements IAbstractTest
 {
-    private static final LoginService LOGIN_SERVICE = new LoginService();
-
-    @Test(dataProvider = "goodLoginProvider")
-    public void buyNothing(String[] credentials)
+    @Test()
+    public void buyNothing()
     {
-        LOGIN_SERVICE.login(credentials);
+        String user = R.TESTDATA.get("good_user");
+        String pass = R.TESTDATA.get("good_pass");
+        String firstName = R.TESTDATA.get("checkoutFirstName");
+        String lastName = R.TESTDATA.get("checkoutLastName");
+        String zip = R.TESTDATA.get("checkoutZip");
 
-        HomePage homePage = new HomePage(getDriver());
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.open();
+        Assert.assertTrue(loginPage.isPageOpened(), "Not on login page");
+        HomePage homePage = loginPage.loginToHome(user, pass);
+        Assert.assertTrue(homePage.isPageOpened(), "Not at home page");
 
         CartPage cartPage = homePage.openCartPage();
+        Assert.assertTrue(cartPage.isPageOpened(), "Not at cart page");
 
         CheckoutInfoPage checkoutInfoPage = cartPage.clickCheckoutButton();
         Assert.assertTrue(checkoutInfoPage.isPageOpened(), "Not at info page");
-        checkoutInfoPage.fillOutForm("Captain", "Falcon", "07");
+        checkoutInfoPage.fillOutForm(firstName, lastName, zip);
 
         PaymentPage paymentPage = checkoutInfoPage.clickPaymentButton();
         Assert.assertTrue(paymentPage.isPageOpened(), "Not at payment page");
@@ -32,12 +37,20 @@ public class PurchaseTest implements IAbstractTest
         Assert.assertTrue(purchaseDonePage.isPageOpened(), "Final page not open");
     }
 
-    @Test(dataProvider = "goodLoginProvider")
-    public void buyBackpack(String[] credentials)
+    @Test()
+    public void buyBackpack()
     {
-        LOGIN_SERVICE.login(credentials);
+        String user = R.TESTDATA.get("good_user");
+        String pass = R.TESTDATA.get("good_pass");
+        String firstName = R.TESTDATA.get("checkoutFirstName");
+        String lastName = R.TESTDATA.get("checkoutLastName");
+        String zip = R.TESTDATA.get("checkoutZip");
 
-        HomePage homePage = new HomePage(getDriver());
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.open();
+        Assert.assertTrue(loginPage.isPageOpened(), "Not on login page");
+        HomePage homePage = loginPage.loginToHome(user, pass);
+        Assert.assertTrue(homePage.isPageOpened(), "Not at home page");
 
         ItemPage backpackPage = homePage.openProductPage("Sauce Labs Backpack");
         Assert.assertTrue(backpackPage.isPageOpened(), "Not at backpack item page");
@@ -49,7 +62,8 @@ public class PurchaseTest implements IAbstractTest
         Assert.assertTrue(cartPage.isPageOpened(), "Not at cart page");
 
         CheckoutInfoPage checkoutInfoPage = cartPage.clickCheckoutButton();
-        checkoutInfoPage.fillOutForm("Captain", "Falcon", "07");
+        Assert.assertTrue(checkoutInfoPage.isPageOpened(), "Not at info page");
+        checkoutInfoPage.fillOutForm(firstName, lastName, zip);
 
         PaymentPage paymentPage = checkoutInfoPage.clickPaymentButton();
         Assert.assertTrue(paymentPage.isPageOpened(), "Not at payment page");
@@ -59,28 +73,23 @@ public class PurchaseTest implements IAbstractTest
         Assert.assertTrue(purchaseDonePage.isPageOpened(), "Final page not open");
     }
 
-    @Test(dataProvider = "goodLoginProvider")
-    public void cancelLightPurchase(String[] credentials)
+    @Test()
+    public void cancelLightPurchase()
     {
-        LOGIN_SERVICE.login(credentials);
+        String user = R.TESTDATA.get("good_user");
+        String pass = R.TESTDATA.get("good_pass");
 
-        HomePage homePage = new HomePage(getDriver());
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.open();
+        Assert.assertTrue(loginPage.isPageOpened(), "Not on login page");
+        HomePage homePage = loginPage.loginToHome(user, pass);
+        Assert.assertTrue(homePage.isPageOpened(), "Not at home page");
 
         ItemPage lightPage = homePage.openProductPage("Sauce Labs Bike Light");
         Assert.assertTrue(lightPage.isPageOpened());
 
-        //Remove button is the same one, so doing this for now
         lightPage.clickAddButton();
-        lightPage.clickAddButton();
-        Assert.assertFalse(lightPage.getQuantityIcon().isElementPresent(5), "Cart quantity icon is visible");
-    }
-
-    @DataProvider(name = "goodLoginProvider")
-    public static Object[][] provideGoodLogin()
-    {
-        return new Object[][]
-                {
-                        {R.TESTDATA.get("good_user"), R.TESTDATA.get("good_pass")}
-                };
+        lightPage.clickRemoveButton();
+        Assert.assertFalse(lightPage.isQuantityIconPresent(), "Cart quantity icon is visible");
     }
 }

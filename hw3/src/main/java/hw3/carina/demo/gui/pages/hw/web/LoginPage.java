@@ -1,5 +1,7 @@
-package hw3.carina.demo.gui.pages.hw;
+package hw3.carina.demo.gui.pages.hw.web;
 
+import com.zebrunner.carina.utils.config.Configuration;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -20,12 +22,20 @@ public class LoginPage extends AbstractPage
     public LoginPage(WebDriver wd)
     {
         super(wd);
+        setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
+        setPageAbsoluteURL(Configuration.getRequired("DEMO.base"));
     }
     
-    public void login(String[] credentials)
+    public void sendLoginInfo(String user, String pass)
     {
-        usernameInput.type(credentials[0]);
-        passInput.type(credentials[1]);
+        usernameInput.type(user);
+        passInput.type(pass);
         confirmButton.click();
+    }
+
+    public HomePage loginToHome(String user, String pass)
+    {
+        sendLoginInfo(user, pass);
+        return new HomePage(getDriver());
     }
 }

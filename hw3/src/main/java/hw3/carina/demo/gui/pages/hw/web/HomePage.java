@@ -1,11 +1,11 @@
-package hw3.carina.demo.gui.pages.hw;
+package hw3.carina.demo.gui.pages.hw.web;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
-import hw3.carina.demo.gui.components.hw.BurgerMenu;
-import hw3.carina.demo.gui.components.hw.ProductComponent;
-import hw3.carina.demo.gui.components.hw.TopNavMenu;
+import hw3.carina.demo.gui.components.hw.web.BurgerMenu;
+import hw3.carina.demo.gui.components.hw.web.ProductComponent;
+import hw3.carina.demo.gui.components.hw.web.TopNavMenu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 

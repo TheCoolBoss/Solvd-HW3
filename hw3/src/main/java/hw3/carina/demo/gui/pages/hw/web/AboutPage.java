@@ -1,4 +1,4 @@
-package hw3.carina.demo.gui.pages.hw;
+package hw3.carina.demo.gui.pages.hw.web;
 
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;

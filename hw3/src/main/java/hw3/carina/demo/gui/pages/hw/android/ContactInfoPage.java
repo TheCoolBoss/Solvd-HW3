@@ -23,6 +23,7 @@ public class ContactInfoPage extends ContactInfoBase
     public ContactInfoPage(WebDriver wd)
     {
         super(wd);
+        setUiLoadedMarker(toolbar.getMoreOptionsButton());
     }
 
     public void clickGoBack()

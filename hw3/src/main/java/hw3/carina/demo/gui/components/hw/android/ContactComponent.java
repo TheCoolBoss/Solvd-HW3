@@ -13,6 +13,9 @@ public class ContactComponent extends AbstractUIObject implements ICustomTypePag
     @FindBy(xpath = "//android.widget.TextView[@resource-id='com.google.android.contacts:id/cliv_name_textview']")
     private ExtendedWebElement contactName;
 
+    @FindBy(xpath = "//android.widget.TextView")
+    private ExtendedWebElement textView;
+
     public ContactComponent(WebDriver wd, SearchContext sc)
     {
         super(wd, sc);
@@ -27,5 +30,15 @@ public class ContactComponent extends AbstractUIObject implements ICustomTypePag
     {
         contactName.click();
         return initPage(getDriver(), ContactInfoBase.class);
+    }
+
+    public String getTextDesc()
+    {
+        if (textView.isElementPresent())
+        {
+            return textView.getAttribute("content-desc");
+        }
+
+        return "";
     }
 }

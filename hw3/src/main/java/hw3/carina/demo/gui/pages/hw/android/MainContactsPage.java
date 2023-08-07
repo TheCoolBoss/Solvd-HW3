@@ -2,7 +2,6 @@ package hw3.carina.demo.gui.pages.hw.android;
 
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import hw3.carina.demo.gui.components.hw.android.ContactComponent;
 import hw3.carina.demo.gui.components.hw.android.BottomNavBar;
 import hw3.carina.demo.gui.pages.hw.android.abstracts.*;
@@ -31,7 +30,6 @@ public class MainContactsPage extends MainContactsBase
     public MainContactsPage(WebDriver wd)
     {
         super(wd);
-        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(newContactButton);
     }
 
@@ -70,6 +68,23 @@ public class MainContactsPage extends MainContactsBase
         }
 
         return null;
+    }
+
+    public int getFaveCount()
+    {
+        int ret = 0;
+        for (ContactComponent cc : contactList)
+        {
+            //This is when the first "alphabetized" category is reached
+            if (cc.getTextDesc().length() == 1)
+            {
+                break;
+            }
+
+            ret++;
+        }
+
+        return ret;
     }
 
     public void searchName(String name)

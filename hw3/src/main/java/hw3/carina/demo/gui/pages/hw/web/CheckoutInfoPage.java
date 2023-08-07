@@ -1,6 +1,7 @@
-package hw3.carina.demo.gui.pages.hw;
+package hw3.carina.demo.gui.pages.hw.web;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -22,6 +23,7 @@ public class CheckoutInfoPage extends AbstractPage
     public CheckoutInfoPage(WebDriver wd)
     {
         super(wd);
+        setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageURL("checkout-step-one.html");
     }
 

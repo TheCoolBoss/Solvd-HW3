@@ -1,9 +1,8 @@
-package hw3.carina.demo.gui.components.hw;
+package hw3.carina.demo.gui.components.hw.web;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
-import hw3.carina.demo.gui.pages.hw.CartPage;
-import hw3.carina.demo.gui.pages.hw.ItemPage;
+import hw3.carina.demo.gui.pages.hw.web.ItemPage;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;

@@ -3,7 +3,6 @@ package hw3.carina.demo.gui.pages.hw.android;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import hw3.carina.demo.gui.pages.hw.android.abstracts.ContactInfoBase;
 import hw3.carina.demo.gui.pages.hw.android.abstracts.EnterContactBase;
 import org.openqa.selenium.WebDriver;
@@ -34,7 +33,6 @@ public class EnterContactInfoPage extends EnterContactBase implements IMobileUti
     public EnterContactInfoPage(WebDriver wd)
     {
         super(wd);
-        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(saveButton);
     }
 
